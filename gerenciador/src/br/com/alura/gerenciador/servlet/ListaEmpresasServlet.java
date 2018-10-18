@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/*
+ * Servlet responsável pela listagem das empresas cadastradas
+ * 
+ * */
 @WebServlet("/listaEmpresas")
 public class ListaEmpresasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	//doGet
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -22,7 +26,9 @@ public class ListaEmpresasServlet extends HttpServlet {
 		
 		request.setAttribute("empresas", lista);
 		
+		//despachando a requisição e seus parâmetros para outra servlet
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+		//'passando para frente'
 		rd.forward(request, response);
 		
 	}

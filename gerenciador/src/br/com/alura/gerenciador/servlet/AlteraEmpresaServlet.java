@@ -26,7 +26,9 @@ public class AlteraEmpresaServlet extends HttpServlet {
 		
 		Date dataAbertura = null;
 		try {
+			//definindo sdf para formato de dia/mes/ano
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			//'parseando a data para um objeto do tipo Date'
 			dataAbertura = sdf.parse(paramDataEmpresa);
 		} catch (ParseException e) {
 			throw new ServletException(e);
@@ -36,6 +38,8 @@ public class AlteraEmpresaServlet extends HttpServlet {
 		
 		Banco banco = new Banco();
 		Empresa empresa = banco.buscaEmpresaPelaId(id);
+		
+		//aleerando os dados da empresa
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
 		
